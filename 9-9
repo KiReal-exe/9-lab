@@ -1,0 +1,27 @@
+import kotlin.random.Random
+
+fun generatePassword(length: Int): String {
+    val passwordBuilder = StringBuilder()
+    val random = Random(System.currentTimeMillis())
+
+    val characters = ('a'..'z') + ('A'..'Z') + ('0'..'9') + "!@#$%^&*()_+-=[]{}|;':\",./<>?"
+
+    repeat(length) {
+        passwordBuilder.append(characters.random(random))
+    }
+
+    return passwordBuilder.toString()
+}
+
+fun main() {
+    println("Введите желаемую длину пароля (минимум 8 символов):")
+    val length = readLine()?.toIntOrNull() ?: 8
+
+    if (length < 8) {
+        println("Длина пароля должна быть минимум 8 символов. Установлено значение по умолчанию: 8.")
+        length
+    }
+
+    val password = generatePassword(length)
+    println("Ваш случайно сгенерированный пароль: $password")
+}
