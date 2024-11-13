@@ -1,0 +1,13 @@
+fun sortStringsAlphabetically(strings: Array<String>): Array<String> 
+{
+    return strings.sortedArray()
+}
+
+fun main() 
+{
+    val unsortedArray = arrayOf("аист", "бегемот", "лев", "шакал", "обезьяна")
+    val sortedArray = sortStringsAlphabetically(unsortedArray)
+
+    println("Отсортированный массив:")
+    sortedArray.forEach { println(it) }
+}
