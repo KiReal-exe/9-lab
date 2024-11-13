@@ -1,0 +1,20 @@
+fun findLongestWord(input: String): String {
+    // Удаляем знаки препинания и разделяем строку на слова
+    val words = input.replace("""[^\p{L}\d\s]""".toRegex(), "").split(" ")
+
+    // Находим самое длинное слово
+    var longestWord = words[0]
+    for (word in words) {
+        if (word.length > longestWord.length) {
+            longestWord = word
+        }
+    }
+
+    return longestWord
+}
+
+fun main() {
+    val input = readLine()!!
+    val longestWord = findLongestWord(input)
+    println("Самое длинное слово: $longestWord")
+}
