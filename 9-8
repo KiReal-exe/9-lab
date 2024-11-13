@@ -1,0 +1,27 @@
+import kotlin.random.Random
+
+fun main() {
+    val secretNumber = Random.nextInt(1, 101)
+    var guess: Int
+    var attempts = 0
+    println("Угадай число от 1 до 100:")
+    do {
+        guess = try {
+            readLine()?.toInt() ?: throw NumberFormatException()
+        } catch (e: NumberFormatException) {
+            println("Неверный формат ввода. Попробуйте еще раз.")
+            continue
+        }
+
+        attempts++
+
+        if (guess < secretNumber) {
+            println("Загаданное число больше.")
+        } else if (guess > secretNumber) {
+            println("Загаданное число меньше.")
+        } else {
+            println("Верно! Вы угадали число за $attempts попыток.")
+            break
+        }
+    } while (true)
+}
