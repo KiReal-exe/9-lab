@@ -1,0 +1,10 @@
+fun main() {
+    println("Введите строку:")
+    val input = readLine() ?: ""
+
+    val output = input.map { char ->
+        if (char.isLowerCase()) char.uppercaseChar() else char.lowercaseChar()
+    }.joinToString("")
+
+    println("Измененная строка: $output")
+}
