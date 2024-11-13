@@ -1,0 +1,11 @@
+fun main() 
+{
+    println("Введите сумму в рублях:")
+    val rubles = readLine()?.toDoubleOrNull() ?: 0.0
+
+    println("Введите курс доллара:")
+    val dollarRate = readLine()?.toDoubleOrNull() ?: 0.0
+
+    val dollars = rubles / dollarRate
+    println("$rubles рублей = $dollars долларов")
+}
