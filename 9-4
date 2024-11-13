@@ -1,0 +1,28 @@
+fun main() {
+    println("Введите первую строку:")
+    val str1 = readLine().orEmpty()
+
+    println("Введите вторую строку:")
+    val str2 = readLine().orEmpty()
+
+    if (areAnagrams(str1, str2)) {
+        println("Строки '$str1' и '$str2' являются анаграммами.")
+    } else {
+        println("Строки '$str1' и '$str2' не являются анаграммами.")
+    }
+}
+
+fun areAnagrams(str1: String, str2: String): Boolean {
+    if (str1.length != str2.length) {
+        return false
+    }
+
+    val charMap1 = countChars(str1)
+    val charMap2 = countChars(str2)
+
+    return charMap1 == charMap2
+}
+
+fun countChars(str: String): Map<Char, Int> {
+    return str.groupingBy { it }.eachCount()
+}
