@@ -1,0 +1,30 @@
+fun main() {
+    println("Введите число N:")
+    val n = readLine()?.toIntOrNull() ?: 0
+
+    if (n < 2) {
+        println("Простых чисел меньше $n не существует.")
+        return
+    }
+
+    val sieve = BooleanArray(n + 1) { true }
+    sieve[0] = false
+    sieve[1] = false
+
+    for (i in 2..Math.sqrt(n.toDouble()).toInt()) {
+        if (sieve[i]) {
+            var j = i * i
+            while (j <= n) {
+                sieve[j] = false
+                j += i
+            }
+        }
+    }
+
+    println("Простые числа до $n:")
+    for (i in 2..n) {
+        if (sieve[i]) {
+            print("$i ")
+        }
+    }
+}
